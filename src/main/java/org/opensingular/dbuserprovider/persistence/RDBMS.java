@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 
 public enum RDBMS {
 
-    POSTGRESQL("PostgreSQL 10+", org.postgresql.Driver.class.getName(), "SELECT 1", new PostgreSQL10Dialect()),
-    MYSQL("MySQL 5.7+", com.mysql.cj.jdbc.Driver.class.getName(), "SELECT 1", new MySQL57Dialect()),
-    ORACLE("Oracle 12+", oracle.jdbc.OracleDriver.class.getName(), "SELECT 1 FROM DUAL", new Oracle12cDialect()),
-    SQL_SERVER("MS SQL Server 2012+ (jtds)", net.sourceforge.jtds.jdbc.Driver.class.getName(), "SELECT 1", new SQLServer2012Dialect());
+    POSTGRESQL("PostgreSQL", org.postgresql.Driver.class.getName(), "SELECT 1", new PostgreSQL10Dialect()),
+    MYSQL("MySQL", com.mysql.cj.jdbc.Driver.class.getName(), "SELECT 1", new MySQL57Dialect()),
+    ORACLE("Oracle", oracle.jdbc.OracleDriver.class.getName(), "SELECT 1 FROM DUAL", new Oracle12cDialect()),
+    SQL_SERVER("MS SQL", net.sourceforge.jtds.jdbc.Driver.class.getName(), "SELECT 1", new SQLServer2012Dialect());
 
     private final String  desc;
     private final String  driver;
