@@ -8,7 +8,7 @@
 
     <artifactId>singular-user-storage-provider</artifactId>
     <groupId>org.opensingular</groupId>
-    <version>2.4</version>
+    <version>2.4.1</version>
 
     <dependencies>
         <dependency>
@@ -23,6 +23,19 @@
             <artifactId>keycloak-server-spi</artifactId>
             <version>${keycloak.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-model-jpa</artifactId>
+            <version>${keycloak.version}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -127,38 +140,26 @@
 
 
     <build>
-        <finalName>singular-user-storage-provider</finalName>
+        <finalName>user-provider</finalName>
         <plugins>
             <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>2.0.2.Final</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    <skip>false</skip>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>make-assembly</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>copy-dependencies</goal>
+                            <goal>single</goal>
                         </goals>
-                        <configuration>
-                            <excludeScope>provided</excludeScope>
-                            <outputDirectory>${project.basedir}/dist</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.2</version>
-                <configuration>
-                    <outputDirectory>${project.basedir}/dist</outputDirectory>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -170,7 +171,7 @@
 
         <lombok.version>1.18.22</lombok.version>
         <jboss-logging.version>3.3.1.Final</jboss-logging.version>
-        <keycloak.version>17.0.1</keycloak.version>
+        <keycloak.version>20.0.0</keycloak.version>
         <auto-service.version>1.0-rc5</auto-service.version>
         <jboss.home>target/keycloak</jboss.home>
     </properties>
