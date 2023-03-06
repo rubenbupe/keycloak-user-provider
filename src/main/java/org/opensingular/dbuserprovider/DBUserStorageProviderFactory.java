@@ -39,6 +39,9 @@ public class DBUserStorageProviderFactory implements UserStorageProviderFactory<
     public static final String SQL_FIND_BY_USERNAME =
             "select id, username, email from users where lower(username) = lower(?) ";
 
+    public static final String SQL_FIND_BY_EMAIL =
+            "select id, username, email from users where lower(email) = lower(?) ";
+
     public static final String SQL_FIND_BY_SEARCH_TERM =
             "select id, username, email from users where lower(username) like lower(?)";
 
@@ -94,6 +97,7 @@ public class DBUserStorageProviderFactory implements UserStorageProviderFactory<
                 SQL_LIST_ALL,
                 SQL_FIND_BY_ID,
                 SQL_FIND_BY_USERNAME,
+                SQL_FIND_BY_EMAIL,
                 SQL_FIND_BY_SEARCH_TERM,
                 FIND_HASH_PASS_BY_USERNAME,
                 SHA_256,
