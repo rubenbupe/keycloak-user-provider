@@ -39,6 +39,9 @@ public class UserAdapter extends AbstractUserAdapterFederatedStorage {
               newValues.add(StringUtils.trimToNull(e.getValue()));
               this.setAttribute(e.getKey(), newValues.stream().filter(Objects::nonNull).collect(Collectors.toList()));
           }
+            if (data.get("emailVerified") != null && data.get("emailVerified").equals("true")) {
+                this.setEmailVerified(true);
+            }
         } catch(Exception e) {
           log.errorv(e, "UserAdapter constructor, username={0}", this.username);
         }
