@@ -163,7 +163,7 @@ public class UserRepository {
 
             MessageDigest digest  = DigestUtils.getDigest(hashFunction);
 
-            String s = Hex.encodeHexString(digest.digest(StringUtils.getBytesUtf8(password.toLowerCase())));
+            String s = Hex.encodeHexString(digest.digest(StringUtils.getBytesUtf8(password)));
 
             log.infov("Hash from database {0} ", hash);
             log.infov("Calculated {0}", s);

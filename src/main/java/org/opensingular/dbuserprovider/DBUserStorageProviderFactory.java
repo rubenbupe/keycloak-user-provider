@@ -37,13 +37,13 @@ public class DBUserStorageProviderFactory implements UserStorageProviderFactory<
             "select id, username, email from users where id = ? ";
 
     public static final String SQL_FIND_BY_USERNAME =
-            "select id, username, email from users where lower(username) = lower(?) ";
+            "select id, username, email from users where username = ? ";
 
     public static final String SQL_FIND_BY_SEARCH_TERM =
-            "select id, username, email from users where lower(username) like lower(?)";
+            "select id, username, email from users where upper(username) like upper(?)";
 
     public static final String FIND_HASH_PASS_BY_USERNAME =
-            "select hash_pwd from users where lower(username) = lower(?) ";
+            "select hash_pwd from users where username = ? ";
 
     public static final String SHA_256 = "SHA-256";
 
