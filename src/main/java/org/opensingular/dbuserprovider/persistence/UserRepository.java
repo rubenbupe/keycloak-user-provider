@@ -137,11 +137,6 @@ public class UserRepository {
                 .stream().findFirst();
     }
 
-    public Optional<Map<String, String>> findUserByEmail(String email) {
-        return Optional.ofNullable(doQuery(queryConfigurations.getFindByEmail(), null, this::readMap, email))
-                .orElse(Collections.emptyList())
-                .stream().findFirst();
-    }
 
     public List<Map<String, String>> findUsers(String search, PagingUtil.Pageable pageable) {
         if (search == null || search.isEmpty()) {

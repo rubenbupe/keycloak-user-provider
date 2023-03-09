@@ -8,7 +8,6 @@ public class QueryConfigurations {
     private String listAll;
     private String findById;
     private String findByUsername;
-    private String findByEmail;
     private String findBySearchTerm;
     private String findPasswordHash;
     private String hashFunction;
@@ -16,12 +15,11 @@ public class QueryConfigurations {
     private boolean allowKeycloakDelete;
     private boolean allowDatabaseToOverwriteKeycloak;
 
-    public QueryConfigurations(String count, String listAll, String findById, String findByUsername, String findByEmail, String findBySearchTerm, String findPasswordHash, String hashFunction, RDBMS RDBMS, boolean allowKeycloakDelete, boolean allowDatabaseToOverwriteKeycloak) {
+    public QueryConfigurations(String count, String listAll, String findById, String findByUsername, String findBySearchTerm, String findPasswordHash, String hashFunction, RDBMS RDBMS, boolean allowKeycloakDelete, boolean allowDatabaseToOverwriteKeycloak) {
         this.count = count;
         this.listAll = listAll;
         this.findById = findById;
         this.findByUsername = findByUsername;
-        this.findByEmail = findByEmail;
         this.findBySearchTerm = findBySearchTerm;
         this.findPasswordHash = findPasswordHash;
         this.hashFunction = hashFunction;
@@ -48,10 +46,6 @@ public class QueryConfigurations {
 
     public String getFindByUsername() {
         return findByUsername;
-    }
-
-    public String getFindByEmail() {
-        return findByEmail;
     }
 
     public String getFindBySearchTerm() {
